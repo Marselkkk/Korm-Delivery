@@ -1,0 +1,131 @@
+.dashed-line {
+  position: relative;
+}
+
+// base (inverse border)
+.dashed-line_top::before,
+.dashed-line_bottom::after,
+.dashed-line_left::before,
+.dashed-line_right::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  background-image: repeating-linear-gradient(
+    to right,
+    $border-inverse 0,
+    $border-inverse 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
+  );
+}
+
+.dashed-line_top::before {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.dashed-line_bottom::after {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.dashed-line_left::before {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    $border-inverse 0,
+    $border-inverse 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
+  );
+}
+
+.dashed-line_right::after {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 1px;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    $border-inverse 0,
+    $border-inverse 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
+  );
+}
+
+.dashed-line_tp.dashed-line_top::before,
+.dashed-line_tp.dashed-line_bottom::after {
+  background-image: repeating-linear-gradient(
+    to right,
+    $border-primary-transparent-10 0,
+    $border-primary-transparent-10 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
+  );
+}
+
+.dashed-line_tp.dashed-line_left::before,
+.dashed-line_tp.dashed-line_right::after {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    $border-primary-transparent-10 0,
+    $border-primary-transparent-10 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
+  );
+}
+
+.dashed-line_inverse-tp.dashed-line_top::before,
+.dashed-line_inverse-tp.dashed-line_bottom::after {
+  background-image: repeating-linear-gradient(
+    to right,
+    $border-inverse-transparent-10 0,
+    $border-inverse-transparent-10 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
+  );
+}
+
+.dashed-line_inverse-tp.dashed-line_left::before,
+.dashed-line_inverse-tp.dashed-line_right::after {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    $border-inverse-transparent-10 0,
+    $border-inverse-transparent-10 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
+  );
+}
+
+.dashed-line_inverse-tp-40.dashed-line_top::before,
+.dashed-line_inverse-tp-40.dashed-line_bottom::after {
+  background-image: repeating-linear-gradient(
+    to right,
+    $border-inverse-transparent-40 0,
+    $border-inverse-transparent-40 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
+  );
+}
+
+.dashed-line_inverse-tp-40.dashed-line_left::before,
+.dashed-line_inverse-tp-40.dashed-line_right::after {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    $border-inverse-transparent-40 0,
+    $border-inverse-transparent-40 0.5rem,
+    transparent 0.5rem,
+    transparent 1rem
+  );
+}

@@ -1,0 +1,363 @@
+$bg-primary: #FAFAFA;
+$bg-inverse: #402722;
+
+$bg-accent: #73534C;
+$bg-terteriary: #B9B0AA;
+$bg-system-w: #98362B;
+
+
+$bg-primary-transparent-20: #FAFAFA33;
+$bg-primary-transparent-10: #FAFAFA1A;
+$bg-primary-transparent-5: #FAFAFA0D;
+
+$bg-inverse-transparent-20: #40272233;
+$bg-inverse-transparent-10: #4027221A;
+$bg-inverse-transparent-5: #4027220D;
+
+$bg-system-overlay-tp-50: #00000080;
+
+
+$text-primary: #402722;
+$text-inverse: #FAFAFA;
+
+$text-accent: #73534C;
+$text-terteriary: #B9B0AA;
+$text-system-w: #98362B;
+
+
+$text-primary-transparent-50: #40272280;
+$text-primary-transparent-30: #4027224D;
+$text-primary-transparent-20-d: #40272233;
+
+$text-accent-transparent-50: #73534C80;
+$text-accent-transparent-30: #73534C4D;
+
+$text-inverse-transparent-50: #FAFAFA80;
+$text-inverse-transparent-30: #FAFAFA4D;
+$text-inverse-transparent-20-d: #FAFAFA33;
+
+
+$icon-primary: #402722;
+$icon-inverse: #FAFAFA;
+
+$icon-accent: #73534C;
+$icon-terteriary: #B9B0AA;
+$icon-system-w: #98362B;
+
+
+$icon-primary-transparent-50: #40272280;
+$icon-primary-transparent-30: #4027224D;
+
+$icon-accent-transparent-50: #73534C80;
+$icon-accent-transparent-30: #73534C4D;
+
+$icon-inverse-transparent-50: #FAFAFA80;
+$icon-inverse-transparent-30: #FAFAFA4D;
+
+
+$border-primary: #402722;
+$border-inverse: #FAFAFA;
+
+$border-accent: #73534C;
+$border-terteriary: #B9B0AA;
+$border-system-w: #98362B;
+
+
+$border-primary-transparent-40: #40272266;
+$border-primary-transparent-20: #40272233;
+$border-primary-transparent-10: #4027221A;
+$border-primary-transparent-5: #4027220D;
+
+$border-inverse-transparent-40: #FAFAFA66;
+$border-inverse-transparent-20: #FAFAFA33;
+$border-inverse-transparent-10: #FAFAFA1A;
+$border-inverse-transparent-5: #FAFAFA0D;
+
+
+// UI
+
+@mixin heading_1{
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 3rem;
+    }
+}
+@mixin heading_2{
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 2.33rem;
+    }
+}
+@mixin heading_3{
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 2rem;
+    }
+}
+@mixin strong_0 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 1.6667rem;
+    }
+}
+@mixin text_0 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    @include mobile {
+        font-size: 1.6667rem;
+    }
+}
+@mixin strong_1 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
+@mixin text_1{
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
+@mixin strong_2{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 1.1667rem;
+    }
+}
+@mixin text_2{
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    @include mobile {
+        font-size: 1.1667rem;
+    }
+}
+@mixin text_3{
+    font-size: .75rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    @include mobile {
+        font-size: 1rem;
+    }
+}
+
+// UI italic
+
+@mixin heading_1_i{
+    font-size: 4rem;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    @include mobile {
+        font-size: 3rem;
+    }
+}
+@mixin heading_2_i{
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    @include mobile {
+        font-size: 2.33rem;
+    }
+}
+@mixin heading_3_i{
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    @include mobile {
+        font-size: 2rem;
+    }
+}
+@mixin strong_0_i {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    @include mobile {
+        font-size: 1.6667rem;
+    }
+}
+@mixin text_0_i {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-style: italic;
+    @include mobile {
+        font-size: 1.6667rem;
+    }
+}
+@mixin strong_1_i {
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
+@mixin text_1_i{
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-style: italic;
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
+@mixin strong_2_i{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    @include mobile {
+        font-size: 1.1667rem;
+    }
+}
+@mixin text_2_i{
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-style: italic;
+    @include mobile {
+        font-size: 1.1667rem;
+    }
+}
+@mixin text_3_i{
+    font-size: .75rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-style: italic;
+    @include mobile {
+        font-size: 1rem;
+    }
+}
+
+// SEO 
+
+@mixin seo_heading_1{
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 2.33rem;
+    }
+}
+@mixin seo_heading_2{
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 2rem;
+    }
+}
+@mixin seo_heading_3{
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 1.8333rem;
+    }
+}
+@mixin seo_heading_4{
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 1.6667rem;
+    }
+}
+@mixin seo_paragraph{
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
+@mixin seo_strong{
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
+@mixin seo_italic{
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    font-style: italic;
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
+@mixin seo_b{
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: -0.02em;
+    color: $text-accent;
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}
+@mixin seo_line{
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 130%;
+    letter-spacing: 0;
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: 8%;
+    text-underline-offset: 25%;
+    text-underline-position: from-font;
+    @include mobile {
+        font-size: 1.5rem;
+    }
+}

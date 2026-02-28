@@ -1,0 +1,47 @@
+article {
+    @include df_fdc;
+    h1, h2, h3, h4, h5, h6 {
+        margin: 1rem 0;
+    }
+    h1 {
+        @include seo_heading_1;
+    }
+    h2 {
+        margin: 1.5rem 0;
+        @include seo_heading_2;
+    }
+    h3 {
+        @include seo_heading_3;
+    }
+    h4 {
+        @include seo_heading_4;
+    }
+    p {
+        @include seo_paragraph;
+        margin: 1rem 0;
+    }
+    ul, ol {
+        margin: 1rem 0;
+        padding-left: 3rem;
+        @include seo_paragraph;
+    }
+    ul {
+        > li {
+            list-style: disc;
+        }
+    }
+    img, svg, video {
+        width: 50%;
+        height: auto;
+    }
+    a {
+        border-bottom: 0.063rem dashed $bg-inverse;
+    }
+    blockquote {
+        margin: 0;
+        padding: 3rem;
+        background: $bg-inverse-transparent-5;
+        @include seo_italic;
+        color: $text-primary;
+    }
+}

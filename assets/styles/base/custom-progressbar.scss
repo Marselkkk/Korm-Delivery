@@ -1,0 +1,25 @@
+.custom-progressbar {
+    height: .125rem!important;
+    background-color: $bg-primary-transparent-20!important;
+    position: relative;
+    overflow: hidden;
+    &__line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $bg-primary;
+        height: .25rem;
+        width: 50%;
+    }
+    .swiper-pagination-progressbar-fill {
+        background-color: $bg-primary!important;
+    }
+    &.dark {
+        .swiper-pagination-progressbar {
+            background-color: $bg-inverse-transparent-20;
+            .swiper-pagination-progressbar-fill {
+                background-color: $bg-inverse;
+            }
+        }
+    }
+}

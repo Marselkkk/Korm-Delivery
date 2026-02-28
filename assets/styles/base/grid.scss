@@ -1,0 +1,8 @@
+.container{
+  margin: 0 1.5rem;
+  @include grid(8, 0);
+  @include mobile {
+    margin: 0 1rem;
+    @include grid(2, 1rem);
+  }
+}
