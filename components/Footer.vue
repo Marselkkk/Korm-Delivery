@@ -42,7 +42,7 @@
                                 </svg>
                             </li>
                             <li>
-                                <a href="#">О нас</a>
+                                <a href="/about">О нас</a>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0.5 17.5L17.5 0.5M17.5 0.5H2.2M17.5 0.5V15.8" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>

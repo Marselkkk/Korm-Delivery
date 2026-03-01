@@ -1,7 +1,8 @@
 <script lang="ts" setup>
     const props = withDefaults(defineProps<{
         color?: 'basic' | 'outline' | 'accent',
-        size?: 'basic' | 'small'
+        size?: 'basic' | 'small' | 'large',
+        link?: string
     }>(),
     {
         color: 'basic',
@@ -10,9 +11,17 @@
 </script>
 
 <template>
+    <a class="button" 
+    :data-color="props.color"
+    :data-size="props.size"
+    v-if="link"
+    :href="link">
+        <slot />
+    </a>
     <button class="button" 
     :data-color="props.color"
-    :data-size="props.size">
+    :data-size="props.size"
+    v-else>
         <slot />
     </button>
 </template>
@@ -56,6 +65,13 @@
             font-size: 1.5rem;
             font-weight: 400;
             @include onest;
+        }
+        &[data-size="large"] {
+            padding: 1.3125rem 3.375rem;
+            font-size: 2rem;
+            font-weight: 700;
+            border-radius: 1rem;
+            @include manrope;
         }
     }
 </style>

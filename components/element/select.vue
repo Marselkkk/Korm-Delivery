@@ -8,10 +8,12 @@
     const props = withDefaults(defineProps<{
         modelValue?: string | number | null
         options: Option[]
-        placeholder?: string
+        placeholder?: string,
+        color?: 'basic' | 'white'
     }>(), {
         modelValue: null,
-        placeholder: 'Выберите...'
+        placeholder: 'Выберите...',
+        color: 'basic'
     })
 
     const emit = defineEmits<{
@@ -52,7 +54,8 @@
 
     <template>
         <div class="dropdown" ref="dropdownRef"
-        :data-active="isOpen">
+        :data-active="isOpen"
+        :data-color="color">
             <button class="dropdown__trigger" @click="toggle">
                 {{ selectedLabel }}
                 <span class="arrow" :class="{ open: isOpen }">
@@ -70,7 +73,7 @@
                 class="dropdown__item"
                 @click="select(option)"
                 >
-                {{ option.label }}
+                    {{ option.label }}
                 </li>
             </ul>
             </transition>
@@ -122,6 +125,13 @@
 
             &:hover {
                 background: #f3f3f3;
+            }
+        }
+        &[data-color="white"] {
+            background-color: #fff;
+            .dropdown__trigger {
+                font-size: 1.25rem;
+                font-weight: 400;
             }
         }
     }

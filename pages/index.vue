@@ -46,11 +46,13 @@
                         </defs>
 
                         <!-- Текст по кругу -->
-                        <text fill="white" font-size="20" letter-spacing="4">
-                        <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
-                            Ассортимент
-                        </textPath>
-                        </text>
+                        <g class="rotating-text">
+                            <text fill="white" font-size="20" letter-spacing="4">
+                                <textPath href="#circlePath" startOffset="50%" text-anchor="middle">
+                                    Ассортимент
+                                </textPath>
+                            </text>
+                        </g>
 
                         <!-- Твоя кнопка -->
                         <circle cx="100" cy="100" r="52" fill="white" />
@@ -158,7 +160,7 @@
     <Footer></Footer>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .hero-section {
         height: 100dvh;
         background-image: url("/images/index_hero_shape.png");
@@ -205,6 +207,20 @@
                 .button {
                     max-width: 15.875rem;
                 }
+            }
+        }
+
+        .rotating-text {
+            animation: rotate 10s linear infinite;
+            transform-origin: 100px 100px;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
             }
         }
     }
@@ -278,7 +294,7 @@
             color: #181818;
         }
         &__info-block {
-            @include df_ac;
+            @include df_ac_jcc;
             gap: 3.125rem;
         }
     }

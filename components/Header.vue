@@ -4,22 +4,38 @@
     }>(),
     {
     
+    });
+
+    const isScrolled = ref(false);
+
+    const handleScroll = () => {
+        isScrolled.value = window.scrollY > 1
+    }
+
+    onMounted(() => {
+        window.addEventListener('scroll', handleScroll)
+        handleScroll()
+    })
+
+    onUnmounted(() => {
+        window.removeEventListener('scroll', handleScroll)
     })
 </script>
 
 <template>
     <header>
         <div class="header">
-            <div class="header__container">
-                <div class="header__logo">
+            <div class="header__container"
+            :class="{ 'scrolled': isScrolled }">
+                <a href="/" class="header__logo">
                     <img src="/images/Logo.png" alt="header-logo">
-                </div>
+                </a>
                 <nav class="header__nav">
                     <ul>
                         <li><a href="#">Ассортимент</a></li>
                         <li><a href="#">Доставка</a></li>
                         <li><a href="#">Отзывы</a></li>
-                        <li><a href="#">О нас</a></li>
+                        <li><a href="/about">О нас</a></li>
                     </ul>
                 </nav>
                 <div class="header__button-block">
@@ -35,7 +51,8 @@
                             +7 (987) 458-54-20
                         </div>
                     </div>
-                    <Button color="outline">
+                    <Button color="outline"
+                    link="/cart">
                         Корзина
                     </Button>
                 </div>
@@ -52,8 +69,13 @@
         left: 0;
         .header {
             &__container {
-                padding: 0 11.25rem;
+                margin: 0 11.25rem;
+                padding: 0 4.375rem;
                 @include df_jb_ac;
+                @include transition(background-color);
+                &.scrolled {
+                    background-color: #1E1E1E4D;
+                }
             }
             &__logo {
                 width: 7.8125rem;
