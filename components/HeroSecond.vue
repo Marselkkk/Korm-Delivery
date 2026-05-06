@@ -50,6 +50,9 @@
         &[data-type="cart"] {
             background-image: url('/images/hero/cart.png');
         }
+        &[data-type="mission"] {
+            background-image: url('/images/hero/mission.png');
+        }
         &__page {
             position: absolute;
             left: 50%;

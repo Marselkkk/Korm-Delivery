@@ -36,6 +36,8 @@
             </div>
         </div>
     </section>
+
+    <Footer></Footer>
 </template>
 
 <style lang="scss">

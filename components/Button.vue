@@ -1,7 +1,7 @@
 <script lang="ts" setup>
     const props = withDefaults(defineProps<{
-        color?: 'basic' | 'outline' | 'accent',
-        size?: 'basic' | 'small' | 'large',
+        color?: 'basic' | 'outline' | 'accent' | 'filter',
+        size?: 'basic' | 'small' | 'large' | 'filter',
         link?: string
     }>(),
     {
@@ -54,6 +54,14 @@
                 background-color: #b3a443;
             }
         }
+        &[data-color="filter"] {
+            color: #8E8E8E;
+            border: 1px solid #8E8E8E;
+            &:hover {
+                color: #727272;
+                border: 1px solid #727272;
+            }
+        }
         &[data-size="basic"] {
             padding: .75rem 2rem;
             font-size: 1.5rem;
@@ -71,6 +79,13 @@
             font-size: 2rem;
             font-weight: 700;
             border-radius: 1rem;
+            @include manrope;
+        }
+        &[data-size="filter"] {
+            padding: 0.5rem 1.875rem;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 1.5rem;
             @include manrope;
         }
     }
