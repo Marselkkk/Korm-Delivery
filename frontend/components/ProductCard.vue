@@ -1,20 +1,26 @@
 <script lang="ts" setup>
     const props = withDefaults(defineProps<{
-        title?: string,
-        desc?: string,
-        image?: string,
-    }>(),
-    {
-    
-    });
+        title?: string
+        desc?: string
+        image?: string
 
-    const selected = ref<string | number | null>(null)
+        weights?: {
+            id: number
+            weight: string
+            price: number
+        }[]
+    }>(), {
+        weights: () => []
+    })
 
-    const options = [
-        { label: '580 ₽  1кг', value: 1 },
-        { label: '900 ₽  1,5кг', value: 2 },
-        { label: '4 650 ₽  10кг', value: 3 },
-    ]
+    const selected = ref<number | null>(null)
+
+    const options = computed(() => {
+        return props.weights.map((item) => ({
+            label: `${item.price} ₽ ${item.weight}`,
+            value: item.id,
+        }))
+    })
 </script>
 
 <template>
@@ -26,7 +32,10 @@
             {{ desc || 'Полнорационный корм для взрослых кошек с чувствительным пищеварением' }}
         </div>
         <div class="product-card__image">
-            <img :src="props.image ? props.image : '/images/product-stub.png'" alt="product-image">
+            <img
+                :src="image || '/images/product-stub.png'"
+                alt="product-image"
+            />
         </div>
         <div class="product-card__button-block">
             <ElementSelect placeholder="Вес"

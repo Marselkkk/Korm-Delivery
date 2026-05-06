@@ -187,6 +187,7 @@
                 @include df_ac;
                 gap: 1rem;
                 img {
+                    cursor: pointer;
                     height: 7.1875rem;
                     width: 7.1875rem;
                     aspect-ratio: 1 / 1;
@@ -197,6 +198,7 @@
                 @include df_ac;
                 gap: .5rem;
                 .weight-button {
+                    cursor: pointer;
                     padding: 0.875rem;
                     border-radius: 0.1875rem;
                     color: #181818;
@@ -221,7 +223,7 @@
                 }
                 ul {
                     @include df_fdc;
-                    gap: 1.5rem;
+                    gap: .2;
                     li {
                         font-weight: 400;
                         font-size: 1rem;

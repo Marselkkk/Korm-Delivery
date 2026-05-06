@@ -1,9 +1,25 @@
 <script lang="ts" setup>
-    const props = withDefaults(defineProps<{
-        
-    }>(),
-    {
-    
+    const config = useRuntimeConfig();
+
+    const backendUrl = 'http://127.0.0.1:8000';
+
+    const { data: products, pending, error } = await useFetch(
+        `${config.public.apiBase}/products`
+    )
+
+    const selectedCategory = ref<'all' | string>('all')
+
+    const filteredProducts = computed(() => {
+        if (!products.value) return []
+
+        if (selectedCategory.value === 'all') {
+            return products.value
+        }
+
+        return products.value.filter(
+            (p: any) =>
+                p.category?.name === selectedCategory.value
+        )
     })
 </script>
 
@@ -21,21 +37,28 @@
                     Ассортимент
                 </div>
                 <div class="assortment-section__filter-block">
-                    <Button color="filter"
-                    size="filter">
-                        Корм для кошек
+                    <Button
+                        color="filter"
+                        size="filter"
+                        @click="selectedCategory = 'all'"
+                    >
+                        Все
                     </Button>
-                    <Button color="filter"
-                    size="filter">
-                        Корм для собак
+
+                    <Button
+                        color="filter"
+                        size="filter"
+                        @click="selectedCategory = 'Для кошек'"
+                    >
+                        Для кошек
                     </Button>
-                    <Button color="filter"
-                    size="filter">
-                        Уход
-                    </Button>
-                    <Button color="filter"
-                    size="filter">
-                        Акссесуары
+
+                    <Button
+                        color="filter"
+                        size="filter"
+                        @click="selectedCategory = 'Для собак'"
+                    >
+                        Для собак
                     </Button>
                 </div>
                 <div class="assortment-section__catalog-block">
@@ -44,24 +67,51 @@
                             Каталог
                         </div>
                         <div class="catalog-panel__info-block">
-                            <div class="catalog-panel__info-block__button">
-                                Сухие корма для собак Premium
+                            <div class="catalog-panel__info-block__button"
+                            @click="selectedCategory = 'Для кошек'">
+                                Для кошек
                             </div>
-                            <div class="catalog-panel__info-block__button">
-                                Сухие корма для собак Super Premium
-                            </div>
-                            <div class="catalog-panel__info-block__button">
-                                Сухие корма для кошек Premium
-                            </div>
-                            <div class="catalog-panel__info-block__button">
-                                Сухие корма для кошек Super Premium
+                            <div class="catalog-panel__info-block__button"
+                            @click="selectedCategory = 'Для собак'">
+                                Для собак
                             </div>
                         </div>
                     </div>
                     <div class="assortment-section__catalog-block__product-block">
-                        <ProductCard></ProductCard>
-                        <ProductCard></ProductCard>
-                        <ProductCard></ProductCard>
+                        <div
+                            v-if="pending"
+                            class="loading"
+                        >
+                            Загрузка...
+                        </div>
+
+                        <div
+                            v-else-if="error"
+                            class="loading"
+                        >
+                            Ошибка загрузки товаров
+                        </div>
+
+                        <div
+                            v-else
+                            class="assortment-section__catalog-block__product-block"
+                        >
+                            <ProductCard
+                                v-for="product in filteredProducts"
+                                :key="product.id"
+
+                                :title="product.name"
+                                :desc="product.description"
+
+                                :image="
+                                    product.images?.length
+                                        ? `${backendUrl}/storage/${product.images[0].image}`
+                                        : '/images/product-stub.png'
+                                "
+
+                                :weights="product.weights"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,6 +150,7 @@
                 background-color: #fff;
                 height: fit-content;
                 max-width: 25.8125rem;
+                width: 100%;
                 &__title {
                     @include onest;
                     font-weight: 400;
