@@ -25,7 +25,7 @@
 
 <template>
     <Header></Header>
-    <HeroSecond type="cart"
+    <HeroSecond type="assortment"
     page="Ассортимент"
     title="Ассортимент"
     desc="Мы — сервис доставки качественного корма для домашних животных." />
@@ -77,41 +77,39 @@
                             </div>
                         </div>
                     </div>
-                    <div class="assortment-section__catalog-block__product-block">
-                        <div
-                            v-if="pending"
-                            class="loading"
-                        >
-                            Загрузка...
-                        </div>
+                    <div
+                        v-if="pending"
+                        class="loading"
+                    >
+                        Загрузка...
+                    </div>
 
-                        <div
-                            v-else-if="error"
-                            class="loading"
-                        >
-                            Ошибка загрузки товаров
-                        </div>
+                    <div
+                        v-else-if="error"
+                        class="loading"
+                    >
+                        Ошибка загрузки товаров
+                    </div>
 
-                        <div
-                            v-else
-                            class="assortment-section__catalog-block__product-block"
-                        >
-                            <ProductCard
-                                v-for="product in filteredProducts"
-                                :key="product.id"
+                    <div
+                        v-else
+                        class="assortment-section__catalog-block__product-block"
+                    >
+                        <ProductCard
+                            v-for="product in filteredProducts"
+                            :key="product.id"
+                            :link="product.id"
+                            :title="product.name"
+                            :desc="product.description"
 
-                                :title="product.name"
-                                :desc="product.description"
+                            :image="
+                                product.images?.length
+                                    ? `${backendUrl}/storage/${product.images[0].image}`
+                                    : '/images/product-stub.png'
+                            "
 
-                                :image="
-                                    product.images?.length
-                                        ? `${backendUrl}/storage/${product.images[0].image}`
-                                        : '/images/product-stub.png'
-                                "
-
-                                :weights="product.weights"
-                            />
-                        </div>
+                            :weights="product.weights"
+                        />
                     </div>
                 </div>
             </div>

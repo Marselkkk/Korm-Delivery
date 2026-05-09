@@ -3,7 +3,7 @@
         title?: string
         desc?: string
         image?: string
-
+        link?: string,
         weights?: {
             id: number
             weight: string
@@ -24,7 +24,7 @@
 </script>
 
 <template>
-    <div class="product-card">
+    <a :href="`products/${link}`" class="product-card">
         <div class="product-card__title">
             {{ title || 'Атлантическая рыба с индейкой и бурым рисом SENSITIVE' }}
         </div>
@@ -47,7 +47,7 @@
                 Подробнее
             </Button>
         </div>
-    </div>
+    </a>
 </template>
 
 <style lang="scss">

@@ -9,7 +9,7 @@
 
 <template>
     <Header></Header>
-    <HeroSecond type="mission"
+    <HeroSecond type="policy"
     page="Политика конф."
     title="Политика конфиденциальности"
     desc="Мы заботимся о здоровье и счастье ваших питомцев, подбирая только качественные и безопасные товары." />

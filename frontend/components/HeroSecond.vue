@@ -3,7 +3,7 @@
         page?: string,
         title?: string,
         desc?: string,
-        type?: 'about' | 'cart' | 'mission'
+        type?: 'about' | 'assortment' | 'cart' | 'index' | 'mission' | 'news' | 'policy'
     }>(),
     {
     
@@ -47,11 +47,23 @@
         &[data-type="about"] {
             background-image: url('/images/hero/about.png');
         }
+        &[data-type="assortment"] {
+            background-image: url('/images/hero/assortment.png');
+        }
         &[data-type="cart"] {
             background-image: url('/images/hero/cart.png');
         }
+        &[data-type="index"] {
+            background-image: url('/images/hero/index.png');
+        }
         &[data-type="mission"] {
             background-image: url('/images/hero/mission.png');
+        }
+        &[data-type="news"] {
+            background-image: url('/images/hero/news.png');
+        }
+        &[data-type="policy"] {
+            background-image: url('/images/hero/policy.png');
         }
         &__page {
             position: absolute;

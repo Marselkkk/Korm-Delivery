@@ -1,11 +1,16 @@
 <script lang="ts" setup>
 
-    const props = withDefaults(defineProps<{
-        
-    }>(),
-    {
+    const backendUrl = 'http://127.0.0.1:8000'
+
+    const {
+        cart,
+        totalPrice,
+        removeFromCart,
+        clearCart,
+        updateQuantity,
+    } = useCart();
+
     
-    })
 </script>
 
 <template>
@@ -20,9 +25,9 @@
             <div class="cart-section__container">
                 <div class="cart-section__header">
                     <div class="cart-section__header__button-block">
-                        <ElementCheckbox>
+                        <!-- <ElementCheckbox>
                             Выбрать все
-                        </ElementCheckbox>
+                        </ElementCheckbox> -->
                         <Button color="accent"
                         size="large">
                             Заказать
@@ -31,7 +36,37 @@
                     <hr>
                 </div>
                 <div class="cart-section__info-block">
-                    <ProductCardCart />
+                    <ProductCardCart
+                        v-for="item in cart"
+                        :key="`${item.productId}-${item.weightId}`"
+
+                        :name="item.name"
+                        :image="`${backendUrl}/storage/${item.image}`"
+
+                        :quantity="item.quantity"
+
+                        :selectedWeightId="item.weightId"
+
+                        :weights="item.weights || []"
+
+                        @remove="removeFromCart(item.productId, item.weightId)"
+
+                        @updateQuantity="
+                            updateQuantity(
+                                item.productId,
+                                item.weightId,
+                                $event
+                            )
+                        "
+
+                        @updateWeight="
+                            updateWeight(
+                                item.productId,
+                                item.weightId,
+                                $event
+                            )
+                        "
+                    />
                 </div>
             </div>
         </div>

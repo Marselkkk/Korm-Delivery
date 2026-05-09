@@ -24,19 +24,19 @@
                     <nav class="footer__info-block__nav">
                         <ul>
                             <li>
-                                <a href="#">Отзывы</a>
+                                <a href="/reviews">Отзывы</a>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0.5 17.5L17.5 0.5M17.5 0.5H2.2M17.5 0.5V15.8" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </li>
                             <li>
-                                <a href="#">Ассортимент</a>
+                                <a href="/assortment">Ассортимент</a>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0.5 17.5L17.5 0.5M17.5 0.5H2.2M17.5 0.5V15.8" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </li>
                             <li>
-                                <a href="#">Преимущества</a>
+                                <a href="#about">Преимущества</a>
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0.5 17.5L17.5 0.5M17.5 0.5H2.2M17.5 0.5V15.8" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>

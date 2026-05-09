@@ -8,6 +8,24 @@
             class: 'custom-page-bg'
         }
     });
+
+    const { addToCart, isInCart } = useCart();
+
+    const addedToCart = computed(() => {
+
+        if (
+            !product.value ||
+            !selectedWeight.value
+        ) {
+            return false
+        }
+
+        return isInCart(
+            product.value.id,
+            selectedWeight.value.id
+        )
+
+    })
     
     const thumbsSwiper = ref(null);
 
@@ -19,13 +37,37 @@
         { id: 1, src: '/images/product-stub.png', alt: 'Product image 1' },
         { id: 2, src: '/images/news-stub.jpg', alt: 'Product image 2' },
     ];
+
+    const route = useRoute()
+
+    const config = useRuntimeConfig()
+
+    const backendUrl = 'http://127.0.0.1:8000'
+
+    const { data: product, pending, error } = await useFetch(
+        `${config.public.apiBase}/products/${route.params.id}`
+    )
+
+    const selectedWeight = ref(null)
+
+    watchEffect(() => {
+
+        if (
+            product.value?.weights?.length &&
+            !selectedWeight.value
+        ) {
+            selectedWeight.value =
+                product.value.weights[0]
+        }
+
+    })
 </script>
 
 <template>
     <Header></Header>
 
     <section>
-        <div class="product-section">
+        <div class="product-section" v-if="product">
             <div class="product-section__container">
                 <div class="product-section__info-block">
                     <div class="product-section__info-block__image-block">
@@ -62,10 +104,10 @@
                     <div class="product-section__product-info">
                         <div class="product-section__product-info__title-block">
                             <div class="title">
-                                «С ИНДЕЙКОЙ»
+                                {{ product.name }}
                             </div>
                             <div class="desc">
-                                Рацион PETVADOR с индейкой укрепляет иммунитет, поддерживает здоровую микрофлору и способствует правильному развитию. Диетическая индейка насыщает организм белком и полезными микроэлементами, улучшая обмен веществ и работу нервной системы. Индюшачий жир обеспечивает Омега-6 и витамины D и E.
+                                {{ product.description }}
                             </div>
                         </div>
                         <div class="product-section__product-info__image-block">
@@ -73,22 +115,31 @@
                             <img src="/images/product-stub.png" alt="product-image_2">
                         </div>
                         <div class="product-section__product-info__weight-block">
-                            <div class="weight-button">
-                                1 кг
-                            </div>
-                            <div class="weight-button">
-                                1,5 кг
-                            </div>
-                            <div class="weight-button">
-                                10 кг
+                            <div
+                                v-for="weight in product.weights"
+                                :key="weight.id"
+                                class="weight-button"
+
+                                :class="{
+                                    active:
+                                        selectedWeight?.id === weight.id
+                                }"
+
+                                @click="selectedWeight = weight"
+                            >
+                                {{ weight.weight }}
                             </div>
                         </div>
                         <div class="product-section__product-info__composition">
                             <span>Минералы и питательные добавки (на 100 гр):</span>
                             <ul>
-                                <li>Калий –588,6 мг</li>
-                                <li>Натрий – 263,7 мг</li>
-                                <li>Магний – 87,9 мг</li>
+                                <li
+                                    v-for="nutrient in product.nutrients"
+                                    :key="nutrient.id"
+                                >
+                                    {{ nutrient.name }} —
+                                    {{ nutrient.pivot.amount }} мг
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -96,8 +147,8 @@
                 <div class="price-block">
                     <div class="price-block__header">
                         <div class="price-block__header__price"
-                        data-discount="1500₽">
-                            500₽
+                        v-if="selectedWeight">
+                            {{ selectedWeight.price }}₽
                         </div>
                         <div class="price-block__header__favourite">
                             <svg width="31" height="28" viewBox="0 0 31 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,9 +156,26 @@
                             </svg>
                         </div>
                     </div>
-                    <Button color="accent"
-                    size="large">
-                        Добавить в корзину
+                    <Button
+                        color="accent"
+                        size="large"
+
+                        :disabled="addedToCart"
+
+                        @click="
+                            addToCart(
+                                product,
+                                selectedWeight
+                            )
+                        "
+                    >
+
+                        {{
+                            addedToCart
+                                ? 'Добавлено'
+                                : 'Добавить в корзину'
+                        }}
+
                     </Button>
                     <span>
                         Доставим в течение двух дней к вашей двери

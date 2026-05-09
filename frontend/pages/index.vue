@@ -2,13 +2,8 @@
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import 'swiper/css';
     import { Pagination, Navigation } from 'swiper/modules';
-    
-    const props = withDefaults(defineProps<{
-        
-    }>(),
-    {
-    
-    });
+
+    const config = useRuntimeConfig();
 
     const swiperOptions = {
         modules: [Pagination, Navigation],
@@ -21,7 +16,11 @@
             prevEl: '.review-prev-button',
             nextEl: '.review-next-button'
         },
-    }
+    };
+
+    const { data: reviews } = await useFetch(
+        `${config.public.apiBase}/reviews`
+    )
 </script>
 
 <template>
@@ -90,7 +89,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="assortment">
         <div class="assortment-section">
             <div class="assortment-section__container">
                 <div class="assortment-section__title">
@@ -103,7 +102,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="reviews">
         <div class="reviews-section">
             <div class="reviews-section__container">
                 <div class="reviews-section__title">
@@ -118,14 +117,13 @@
                     </div>
                     <div class="reviews-section__info-block__swiper">
                         <Swiper v-bind="swiperOptions">
-                            <SwiperSlide>
-                                <ReviewCard />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <ReviewCard />
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <ReviewCard />
+                            <SwiperSlide v-for="review in reviews || []"
+                            :key="review.id">
+                                <ReviewCard :name="review.name"
+                                    :text="review.text"
+                                    :rating="review.rating"
+                                    :avatar="review.avatar"
+                                />
                             </SwiperSlide>
                             <div class="swiper-pagination custom-pagination"></div>
                         </Swiper>
@@ -141,7 +139,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="about">
         <div class="advantages-section">
             <div class="advantages-section__container">
                 <div class="advantages-section__title">
@@ -261,6 +259,7 @@
             gap: 11.875rem;
             &__swiper {
                 min-width: 0;
+                width: 100%;
             }
             .swiper-button {
                 height: 4.875rem;

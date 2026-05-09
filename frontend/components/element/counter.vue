@@ -1,34 +1,37 @@
 <script lang="ts" setup>
     const props = defineProps<{
-        id?: string,
-        name?: string,
-        productId?: string,
-    }>();
+        modelValue: number
+    }>()
 
-    const counterQuantity = ref(0);
+    const emit = defineEmits([
+        'update:modelValue'
+    ])
 
     const increaseInput = () => {
-        counterQuantity.value++;
-    };
+        emit('update:modelValue', props.modelValue + 1)
+    }
 
     const decreaseInput = () => {
-        if (counterQuantity.value > 1) {
-            counterQuantity.value -= 1;
-        } else {
-            counterQuantity.value = 0;
-        }
-    };
+        emit(
+            'update:modelValue',
+            props.modelValue > 1
+                ? props.modelValue - 1
+                : 1
+        )
+    }
 
     const updateValue = (event: Event) => {
-        const input = event.target as HTMLInputElement;
-        const parsed = parseInt(input.value);
 
-        if (!isNaN(parsed) && parsed >= 1) {
-            counterQuantity.value = parsed;
-        } else {
-            counterQuantity.value = 1;
-        }
-    };
+        const input =
+            event.target as HTMLInputElement
+
+        const value = parseInt(input.value)
+
+        emit(
+            'update:modelValue',
+            isNaN(value) ? 1 : value
+        )
+    }
 
 </script>
 
@@ -44,7 +47,7 @@
             <input :id="id || 'counter-label-id'" 
             :name="name || 'counter_label_name'"
             type="number"
-            :value="counterQuantity"
+            :value="modelValue"
             @input="updateValue">
         </label>
         <div class="counter_button"

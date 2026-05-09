@@ -1,38 +1,98 @@
 <script lang="ts" setup>
-    const selected = ref<string | number | null>(null)
+    const emit = defineEmits([
+        'remove',
+        'updateQuantity',
+        'updateWeight',
+    ])
 
-    const options = [
-        { label: '580 ₽  1кг', value: 1 },
-        { label: '900 ₽  1,5кг', value: 2 },
-        { label: '4 650 ₽  10кг', value: 3 },
-    ]
+    const props = defineProps<{
 
-    const props = withDefaults(defineProps<{
-        
-    }>(),
-    {
-        
+        name?: string
+
+        image?: string
+
+        quantity?: number
+
+        selectedWeightId?: number
+
+        weights?: any[]
+
+    }>()
+
+    const selected = ref(
+        props.selectedWeightId
+    )
+
+    const options = computed(() => {
+
+        return props.weights.map(
+            weight => ({
+                label:
+                    `${weight.price} ₽ ${weight.weight}`,
+
+                value: weight.id,
+            })
+        )
+
+    })
+
+    watch(selected, value => {
+
+        emit('updateWeight', value)
+
     })
 </script>
 
 <template>
     <div class="product-card-cart">
+
         <div class="product-card-cart__info-block">
-            <div class="product-card-cart__info-block__image">
-                <img src="/images/product.png" alt="product-image">
+
+            <div
+                class="product-card-cart__info-block__image"
+            >
+                <img
+                    :src="image"
+                    alt="product-image"
+                >
             </div>
-            <div class="product-card-cart__info-block__title-block">
-                Полнорационный корм для взрослых кошек всех пород
-                <span>«С ИНДЕЙКОЙ»</span>
+
+            <div
+                class="product-card-cart__info-block__title-block"
+            >
+                {{ name }}
             </div>
+
         </div>
-        <div class="product-card-cart__button-block">
-            <ElementCounter />
-            <ElementSelect placeholder="Вес"
-            v-model="selected" 
-            :options="options"
-            color="white" />
+
+        <div
+            class="product-card-cart__button-block"
+        >
+
+            <ElementCounter
+                :model-value="quantity"
+                @update:modelValue="
+                    emit('updateQuantity', $event)
+                "
+            />
+
+            <ElementSelect
+
+                placeholder="Вес"
+
+                v-model="selected"
+
+                :options="options"
+
+                color="white"
+            />
+
+            <button @click="emit('remove')">
+                Удалить
+            </button>
+
         </div>
+
     </div>
 </template>
 
