@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 
@@ -15,4 +16,22 @@ Route::get('/products', function () {
         'weights',
         'nutrients',
     ])->get();
+});
+
+Route::get('/products/{id}', function ($id) {
+
+    return Product::with([
+        'images',
+        'weights',
+        'nutrients',
+        'category',
+        'relatedProducts',
+    ])->findOrFail($id);
+
+});
+
+Route::get('/reviews', function () {
+
+    return Review::latest()->get();
+
 });
