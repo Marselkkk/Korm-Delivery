@@ -36,6 +36,7 @@
                         <li><a href="/mission">Доставка</a></li>
                         <li><a href="/#reviews">Отзывы</a></li>
                         <li><a href="/about">О нас</a></li>
+                        <li><a href="/news">Новости</a></li>
                     </ul>
                 </nav>
                 <div class="header__button-block">
