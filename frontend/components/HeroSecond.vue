@@ -29,7 +29,8 @@
                     </div>
                     <div class="hero-section__info-block__button-block">
                         <Button color="accent" 
-                        size="small">
+                        size="small"
+                        link="/assortment">
                             Перейти к ассортименту
                         </Button>
                     </div>

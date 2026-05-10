@@ -42,7 +42,7 @@
 
     const config = useRuntimeConfig()
 
-    const backendUrl = 'http://31.58.46.72'
+    const backendUrl = 'https://www.ptnasily.ru'
 
     const { data: product, pending, error } = await useFetch(
         `${config.public.apiBase}/products/${route.params.id}`

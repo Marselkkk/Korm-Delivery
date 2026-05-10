@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: 'http://31.58.46.72/api'
+      apiBase: 'https://www.ptnasily.ru/api'
     }
   },
 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    const backendUrl = 'http://31.58.46.72'
+    const backendUrl = 'https://www.ptnasily.ru'
 
     const props = withDefaults(defineProps<{
         name?: string

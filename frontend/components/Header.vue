@@ -34,7 +34,7 @@
                     <ul>
                         <li><a href="/assortment">Ассортимент</a></li>
                         <li><a href="/mission">Доставка</a></li>
-                        <li><a href="#reviews">Отзывы</a></li>
+                        <li><a href="/#reviews">Отзывы</a></li>
                         <li><a href="/about">О нас</a></li>
                     </ul>
                 </nav>
