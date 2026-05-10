@@ -42,7 +42,7 @@
 
     const config = useRuntimeConfig()
 
-    const backendUrl = 'http://127.0.0.1:8000'
+    const backendUrl = 'http://31.58.46.72'
 
     const { data: product, pending, error } = await useFetch(
         `${config.public.apiBase}/products/${route.params.id}`

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 
-    const backendUrl = 'http://127.0.0.1:8000'
+    const backendUrl = 'http://31.58.46.72'
 
     const {
         cart,
