@@ -1,10 +1,5 @@
 <script lang="ts" setup>
-    const props = withDefaults(defineProps<{
-        
-    }>(),
-    {
-    
-    })
+    const { currentlyMobile } = mobileState();
 </script>
 
 <template>
@@ -18,6 +13,13 @@
                     <div class="footer__contact-block__contacts">
                         <a href="#">dostavka@gmail.com</a>
                         <a href="#">+7 (987) 568-54-20</a>
+                    </div>
+                    <div class="footer__socials"
+                    v-if="currentlyMobile">
+                        <a href="#">VK</a>
+                        <a href="#">Telegram</a>
+                        <a href="#">MAX</a>
+                        <a href="#">WhatsApp</a>
                     </div>
                 </div>
                 <div class="footer__info-block">
@@ -88,7 +90,8 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="footer__socials">
+                <div class="footer__socials"
+                v-if="!currentlyMobile">
                     <a href="#">VK</a>
                     <a href="#">Telegram</a>
                     <a href="#">MAX</a>
@@ -108,13 +111,23 @@
                 background-color: #F8F2D5;
                 @include df_fdc;
                 gap: 1.125rem;
+                @include mobile {
+                    padding: 1.33rem 1.33rem;
+                }
             }
             &__contact-block {
                 @include df_ac;
                 gap: 1.875rem;
+                @include mobile {
+                    gap: 1.33rem;
+                }
                 &__logo {
                     width: 5.75rem;
                     height: 3.75rem;
+                    @include mobile {
+                        width: 3.3333rem;
+                        height: 2.0833rem;
+                    }
                     img {
                         @include image_cover;
                     }
@@ -122,23 +135,35 @@
                 &__contacts {
                     @include df_fdc;
                     gap: 1.125rem;
+                    @include mobile {
+                        gap: 0.6667rem;
+                    }
                     a {
                         font-size: 1.25rem;
                         font-weight: 400;
                         color: #000;
                         @include manrope;
+                        @include mobile {
+                            font-size: 0.7267rem;
+                        }
                     }
                 }
             }
             &__info-block {
                 display: flex;
                 gap: 10rem;
+                @include mobile {
+                    gap: 1rem;
+                }
                 &__nav {
                     max-width: 22.1875rem;
                     width: 100%;
                     ul {
                         @include df_fdc;
                         gap: 1.875rem;
+                        @include mobile {
+                            gap: 1rem;
+                        }
                         li {
                             @include df_jb_ac;
                             border-bottom: 1px solid #000;
@@ -146,12 +171,19 @@
                                 font-size: 1.5rem;
                                 font-weight: 300;
                                 color: #000;
-                                @include manrope
+                                @include manrope;
+                                @include mobile {
+                                    font-size: .8333rem;
+                                }
                             }
                             svg {
                                 height: 1rem;
                                 width: 1rem;
                                 aspect-ratio: 1 / 1;
+                                @include mobile {
+                                    height: 0.6rem;
+                                    width: 0.6rem;
+                                }
                             }
                         }
                     }
@@ -162,6 +194,9 @@
                     ul {
                         @include df_fdc;
                         gap: 1.875rem;
+                        @include mobile {
+                            gap: 1rem;
+                        }
                         li {
                             @include df_jb_ac;
                             border-bottom: 1px solid #000;
@@ -169,12 +204,19 @@
                                 font-size: 1.25rem;
                                 font-weight: 300;
                                 color: #000;
-                                @include manrope
+                                @include manrope;
+                                @include mobile {
+                                    font-size: 0.7042rem;
+                                }
                             }
                             svg {
                                 height: 1rem;
                                 width: 1rem;
                                 aspect-ratio: 1 / 1;
+                                @include mobile {
+                                    height: 0.6rem;
+                                    width: 0.6rem;
+                                }
                             }
                         }
                     }
@@ -184,11 +226,18 @@
                 padding-top: .75rem;
                 @include df_ac;
                 gap: 3.4375rem;
+                @include mobile {
+                    gap: 2.5rem;
+                    padding: 0;
+                }
                 a {
                     font-size: 1rem;
                     font-weight: 400;
                     @include manrope;
                     color: #808080;
+                    @include mobile {
+                        font-size: 0.6667rem;
+                    }
                 }
             }
         }

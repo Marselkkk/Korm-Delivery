@@ -4,6 +4,7 @@
     import { Pagination, Navigation } from 'swiper/modules';
 
     const config = useRuntimeConfig();
+    const { currentlyMobile } = mobileState();
 
     const backendUrl = 'https://www.ptnasily.ru';
 
@@ -199,11 +200,13 @@
     <section id="reviews">
         <div class="reviews-section">
             <div class="reviews-section__container">
-                <div class="reviews-section__title">
+                <div class="reviews-section__title"
+                v-if="!currentlyMobile">
                     Отзывы клиентов
                 </div>
                 <div class="reviews-section__info-block">
-                    <div class="swiper-button review-prev-button">
+                    <div class="swiper-button review-prev-button"
+                    v-if="!currentlyMobile">
                         <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="39" cy="39" r="39" transform="rotate(-180 39 39)" fill="#D9D9D9"/>
                             <path d="M36.3243 39L50 52.8L45.8378 57L28 39L45.8378 21L50 25.2L36.3243 39Z" fill="#181818"/>
@@ -222,7 +225,8 @@
                             <div class="swiper-pagination custom-pagination"></div>
                         </Swiper>
                     </div>
-                    <div class="swiper-button review-next-button">
+                    <div class="swiper-button review-next-button"
+                    v-if="!currentlyMobile">
                         <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="39" cy="39" r="39" fill="#D9D9D9"/>
                             <path d="M41.6757 39L28 25.2L32.1622 21L50 39L32.1622 57L28 52.8L41.6757 39Z" fill="#181818"/>
@@ -236,7 +240,8 @@
     <section id="about">
         <div class="advantages-section">
             <div class="advantages-section__container">
-                <div class="advantages-section__title">
+                <div class="advantages-section__title"
+                v-if="!currentlyMobile">
                     Наши преимущства
                 </div>
                 <div class="advantages-section__info-block">
@@ -266,6 +271,10 @@
         background-image: url("/images/index_hero_shape.png");
         @include bg_s;
         position: relative;
+        @include mobile {
+            background-image: url("/images/index_hero_shape_mobile.png");
+            height: 404px;
+        }
         &__button {
             position: absolute;
             bottom: .75rem;
@@ -274,6 +283,9 @@
             height: 10.625rem;
             width: 11.5625rem;
             aspect-ratio: 1 / 1;
+            @include mobile {
+                display: none;
+            }
             svg {
                 @include wh-100;
             }
@@ -283,14 +295,27 @@
             gap: 2.5rem;
             padding-top: 15.3125rem;
             padding-left: 11.25rem;
+            @include mobile {
+                padding: 162px 0 0 0;
+            }
             &__title-block {
                 @include df_fdc;
                 gap: 1rem;
                 color: #fff;
+                @include mobile {
+                    align-items: center;
+                    padding: 0 2.5rem;
+                    text-align: center;
+                }
                 &__title {
                     font-size: 3rem;
                     font-weight: 900;
                     max-width: 45%;
+                    @include mobile {
+                        max-width: none;
+                        font-size: 26px;
+                        letter-spacing: -.05em;
+                    }
                     span {
                         color: #CCBA4B;
                     }
@@ -299,13 +324,24 @@
                     font-size: 1.5rem;
                     font-weight: 400;
                     max-width: 34%;
+                    @include mobile {
+                        max-width: none;
+                        font-size: 14px;
+                        font-weight: 300;
+                    }
                 }
             }
             &__button-block {
                 @include df_ac;
                 gap: 1.5rem;
+                @include mobile {
+                    justify-content: center;
+                }
                 .button {
                     max-width: 15.875rem;
+                    @include mobile {
+                        font-size: 13px;
+                    }
                 }
             }
         }
@@ -344,17 +380,28 @@
 
     .assortment-section {
         margin-top: 3.75rem;
+        @include mobile {
+            margin-top: 3rem;
+        }
         &__container {
             padding: 3.75rem 6.25rem 6.25rem;
             background-color: #F8F2D5;
             @include df_fdc;
             gap: 2rem;
+            @include mobile {
+                padding: 1.33rem;
+                gap: 1.33rem;
+            }
         }
         &__title {
             @include onest;
             font-weight: 700;
             font-size: 3rem;
             color: #181818;
+            @include mobile {
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
         }
         &__filter-block {
             @include df_ac;
@@ -363,6 +410,10 @@
         &__catalog-block {
             display: flex;
             gap: 2.5rem;
+            @include mobile {
+                flex-direction: column;
+                gap: 1.33rem;
+            }
             .catalog-panel {
                 @include df_fdc;
                 gap: 1.5rem;
@@ -371,6 +422,9 @@
                 height: fit-content;
                 max-width: 25.8125rem;
                 width: 100%;
+                @include mobile {
+                    max-width: none;
+                }
                 &__title {
                     @include onest;
                     font-weight: 400;
@@ -397,17 +451,31 @@
             &__product-block {
                 @include grid(2, 2rem);
                 row-gap: 6.25rem;
+                @include mobile {
+                    row-gap: 2rem;
+                }
+                .product-card {
+                    @include mobile {
+                        grid-column: span 2;
+                    }
+                }
             }
         }
     }
 
     .reviews-section {
         margin-top: 8.125rem;
+        @include mobile {
+            margin-top: 1.33rem;
+        }
         &__container {
             padding: 3.75rem 6.25rem;
             @include df_fdc;
             gap: 3.75rem;
             background-color: #F8F2D5;
+            @include mobile {
+                padding: 1.33rem 2.6667rem;
+            }
         }
         &__title {
             font-size: 2.5rem;
@@ -440,12 +508,19 @@
 
     .advantages-section {
         margin: 22rem 4.375rem 0;
+        @include mobile {
+            margin: 1.33rem 0;
+        }
         &__container {
             background-color: #F8F2D5;
             border-radius: 5rem;
             padding: 7.5rem 12.75rem;
             @include df_fdc;
             gap: 3.25rem;
+            @include mobile {
+                padding: 1.33rem 0.83rem;
+                border-radius: 0;
+            }
         }
         &__title {
             font-size: 2.5rem;
@@ -456,6 +531,9 @@
         &__info-block {
             @include df_ac_jcc;
             gap: 3.125rem;
+            @include mobile {
+                gap: 0.9167rem;
+            }
         }
     }
 </style>

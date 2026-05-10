@@ -56,6 +56,9 @@
         @include df_ac_jcc;
         position: relative;
         overflow: hidden;
+        @include mobile {
+            height: 10rem;
+        }
         &__title {
             color: #000;
             font-size: 2rem;
@@ -65,6 +68,9 @@
             transition: opacity 0.3s ease, transform 0.3s ease;
             opacity: 1;
             transform: scale(1);
+            @include mobile {
+                font-size: .83rem;
+            }
         }
         
         &__title-block {

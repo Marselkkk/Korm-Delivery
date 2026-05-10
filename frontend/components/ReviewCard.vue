@@ -48,10 +48,20 @@
         display: flex;
         gap: 1.25rem;
         width: 100%;
+        @include mobile {
+            flex-direction: column;
+            gap: 0.33rem;
+        }
         &__avatar {
             height: 7.8125rem;
             width: 7.8125rem;
             aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            overflow: hidden;
+            @include mobile {
+                height: 3.5rem;
+                width: 3.5rem;
+            }
             img {
                 @include image_cover;
             }
@@ -61,9 +71,15 @@
             gap: 1.875rem;
             @include onest;
             color: #181818;
+            @include mobile {
+                gap: 1rem;
+            }
             &__text {
                 font-size: 1.5rem;
                 font-weight: 300;
+                @include mobile {
+                    font-size: .75rem;
+                }
             }
             &__profile {
                 @include df_fdc;
@@ -71,6 +87,9 @@
                 &__name {
                     font-size: 1.5rem;
                     font-weight: 500;
+                    @include mobile {
+                        font-size: .75rem;
+                    }
                 }
                 &__desc {
                     @include df_fdc;
@@ -78,6 +97,9 @@
                     span {
                         font-size: 1.5rem;
                         font-weight: 300;
+                        @include mobile {
+                            font-size: .75rem;
+                        }
                     }
                 }
                 &__rating {
@@ -85,6 +107,10 @@
                     svg {
                         width: 1.1875rem;
                         height: 1.125rem;
+                        @include mobile {
+                            width: .6333rem;
+                            height: .6rem;
+                        }
                     }
                 }
             }
