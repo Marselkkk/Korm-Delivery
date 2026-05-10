@@ -32,10 +32,10 @@
                 </a>
                 <nav class="header__nav">
                     <ul>
-                        <li><a href="#assortment">Ассортимент</a></li>
-                        <li><a href="#">Доставка</a></li>
+                        <li><a href="/assortment">Ассортимент</a></li>
+                        <li><a href="/mission">Доставка</a></li>
                         <li><a href="#reviews">Отзывы</a></li>
-                        <li><a href="#about">О нас</a></li>
+                        <li><a href="/about">О нас</a></li>
                     </ul>
                 </nav>
                 <div class="header__button-block">
