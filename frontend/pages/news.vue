@@ -23,6 +23,8 @@
             </div>
         </div>
     </section>
+
+    <Footer></Footer>
 </template>
 
 <style lang="scss">
@@ -32,6 +34,10 @@
             background-color: #F8F2D5;
             padding: 2.5rem 1.25rem;
             @include grid(3, 2.5rem);
+            @include mobile {
+                @include df_fdc;
+                gap: 1rem;
+            }
         }
     }
 </style>

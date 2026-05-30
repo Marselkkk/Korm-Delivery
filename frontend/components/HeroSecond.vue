@@ -75,6 +75,10 @@
             font-weight: 500;
             color: #000;
             @include onest;
+            @include mobile {
+                bottom: 1.8125rem;
+                text-align: center;
+            }
             span {
                 color: #CCBA4B;
             }
@@ -84,6 +88,11 @@
             padding-left: 11.25rem;
             @include df_fdc;
             gap: 2.5rem;
+            @include mobile {
+                padding-top: 50%;
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
             &__title-block {
                 @include df_fdc;
                 gap: 1rem;
@@ -92,11 +101,18 @@
                     font-size: 3rem;
                     font-weight: 900;
                     max-width: 45%;
+                    @include mobile {
+                        max-width: none;
+                        word-break: break-all;
+                    }
                 }
                 &__sub-title {
                     font-size: 1.5rem;
                     font-weight: 400;
                     max-width: 40%;
+                    @include mobile {
+                        max-width: none;
+                    }
                 }
             }
         }

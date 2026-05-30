@@ -93,11 +93,17 @@
             background-color: #F8F2D5;
             @include df_fdc;
             gap: 3.75rem;
+            @include mobile {
+                padding: 1rem;
+            }
         }
         &__title-block {
             @include df_fdc;
             gap: .75rem;
             max-width: 44%;
+            @include mobile {
+                max-width: none;
+            }
             &__title {
                 @include manrope;
                 font-weight: 500;
@@ -114,6 +120,9 @@
         &__info-block {
             @include df_ac;
             gap: 3rem;
+            @include mobile {
+                flex-direction: column;
+            }
             &__image {
                 max-height: 15.5625rem;
                 aspect-ratio: 26.5 / 15.5625;

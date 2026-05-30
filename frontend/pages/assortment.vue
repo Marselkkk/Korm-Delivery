@@ -1,5 +1,6 @@
 <script lang="ts" setup>
     const config = useRuntimeConfig();
+    const { currentlyMobile } = mobileState();
 
     const backendUrl = 'https://www.ptnasily.ru';
 
@@ -122,17 +123,28 @@
 <style lang="scss">
     .assortment-section {
         margin-top: 3.75rem;
+        @include mobile {
+            margin-top: 3rem;
+        }
         &__container {
             padding: 3.75rem 6.25rem 6.25rem;
             background-color: #F8F2D5;
             @include df_fdc;
             gap: 2rem;
+            @include mobile {
+                padding: 1.33rem;
+                gap: 1.33rem;
+            }
         }
         &__title {
             @include onest;
             font-weight: 700;
             font-size: 3rem;
             color: #181818;
+            @include mobile {
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
         }
         &__filter-block {
             @include df_ac;
@@ -141,6 +153,10 @@
         &__catalog-block {
             display: flex;
             gap: 2.5rem;
+            @include mobile {
+                flex-direction: column;
+                gap: 1.33rem;
+            }
             .catalog-panel {
                 @include df_fdc;
                 gap: 1.5rem;
@@ -149,6 +165,9 @@
                 height: fit-content;
                 max-width: 25.8125rem;
                 width: 100%;
+                @include mobile {
+                    max-width: none;
+                }
                 &__title {
                     @include onest;
                     font-weight: 400;
@@ -175,6 +194,14 @@
             &__product-block {
                 @include grid(2, 2rem);
                 row-gap: 6.25rem;
+                @include mobile {
+                    row-gap: 2rem;
+                }
+                .product-card {
+                    @include mobile {
+                        grid-column: span 2;
+                    }
+                }
             }
         }
     }

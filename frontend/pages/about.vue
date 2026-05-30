@@ -42,6 +42,10 @@
         height: 60.4375rem;
         background-image: url('/images/about-image.png');
         @include bg_s;
+        @include mobile {
+            height: 50rem;
+            background-size: contain;
+        }
         &__container {
             padding: 3.75rem 0 8.625rem;
             @include df_fdc_ac;
@@ -52,6 +56,9 @@
             @include df_fdc_ac;
             gap: 1.25rem;
             @include manrope;
+            @include mobile {
+                text-align: center;
+            }
             &__title {
                 font-size: 2.5rem;
                 font-weight: 700;

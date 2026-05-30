@@ -204,9 +204,16 @@
             gap: 6.6875rem;
             // gap: 11.6875rem;
             padding: 0 5.625rem 12.5rem;
+            @include mobile {
+                flex-direction: column;
+                padding: 0 1rem;
+            }
         }
         &__info-block {
             @include grid(2, 1.875rem);
+            @include mobile {
+                @include df_fdc;
+            }
             &__thumbs-block {
                 padding-top: 1.25rem;
             }
@@ -237,6 +244,9 @@
         &__product-info {
             @include df_fdc;
             gap: 1.5rem;
+            // @include mobile {
+            //     grid-column: span 2;
+            // }
             &__title-block {
                 @include df_fdc;
                 gap: 1.125rem;
@@ -311,6 +321,9 @@
                 background-color: #A3B18A;
                 border-radius: 1.6875rem;
                 font-weight: 500;
+                @include mobile {
+                    width: 100%;
+                }
             }
             &__header {
                 @include df_jb_ac;
@@ -333,6 +346,9 @@
                 font-weight: 300;
                 font-size: .8125rem;
                 color: #000;
+                @include mobile {
+                    text-align: center;
+                }
             }
         }
     }

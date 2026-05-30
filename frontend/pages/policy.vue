@@ -42,6 +42,9 @@
         &__container {
             padding: 2.5rem 8.75rem;
             background-color: #F8F2D5;
+            @include mobile {
+                padding: 1rem;
+            }
             ul {
                 @include df_fdc;
                 gap: 3rem;
@@ -50,6 +53,9 @@
                     font-weight: 500;
                     font-size: 2rem;
                     color: #181818;
+                    @include mobile {
+                        font-size: 1.25rem;
+                    }
                 }
             }
         }

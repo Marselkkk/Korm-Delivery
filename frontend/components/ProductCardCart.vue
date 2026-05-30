@@ -99,9 +99,17 @@
 <style lang="scss">
     .product-card-cart {
         @include df_jb_ac;
+        @include mobile {
+            flex-direction: column;
+            align-items: flex-start;
+        }
         &__info-block {
             @include df_ac;
             gap: 1.125rem;
+            @include mobile {
+                justify-content: space-between;
+                width: 100%;
+            }
             &__image {
                 height: 11.5625rem;
                 width: 9rem;
@@ -126,6 +134,11 @@
         &__button-block {
             @include df_ac;
             gap: 4.875rem;
+            @include mobile {
+                width: 100%;
+                gap: 0;
+                justify-content: space-between;
+            }
         }
     }
 </style>

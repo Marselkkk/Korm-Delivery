@@ -84,6 +84,9 @@
     .dropdown {
         position: relative;
         width: 200px;
+        @include mobile {
+            width: 150px;
+        }
         &[data-active="true"] {
             background-color: #fff;
         }

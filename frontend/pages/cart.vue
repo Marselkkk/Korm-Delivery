@@ -78,6 +78,9 @@
 <style lang="scss">
     .cart-section {
         margin: 3.75rem 6.25rem 0;
+        @include mobile {
+            margin: 0;
+        }
         &__container {
             background-color: #F8F2D5;
         }
@@ -87,6 +90,11 @@
             gap: 1.25rem;
             &__button-block {
                 @include df_jb_ac;
+                @include mobile {
+                    .button {
+                        width: 100%;
+                    }
+                }
             }
             hr {
                 border: 0;
