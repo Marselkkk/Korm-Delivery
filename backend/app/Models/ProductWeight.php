@@ -14,4 +14,9 @@ class ProductWeight extends Model
         'weight',
         'price',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
