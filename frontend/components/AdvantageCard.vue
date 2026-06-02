@@ -86,6 +86,9 @@
             transform: scale(0.8);
             transition: opacity 0.3s ease, transform 0.3s ease;
             pointer-events: none;
+            @include mobile {
+                font-size: .83rem;
+            }
         }
 
         &__decoration {
@@ -100,18 +103,30 @@
                 left: -10%;
                 max-height: 7.25rem;
                 aspect-ratio: 8.75 / 7.25;
+                @include mobile {
+                    max-height: 3.0833rem;
+                    aspect-ratio: 3.75 / 3.0833;
+                }
             }
             &[data-decoration-color="grey"] {
                 top: 0;
                 right: 2.5rem;
                 max-height: 5.375rem;
-                aspect-ratio: 4rem / 5.375;
+                aspect-ratio: 4 / 5.375;
+                @include mobile {
+                    max-height: 2.3333rem;
+                    aspect-ratio: 1.6667 / 2.3333;
+                }
             }
             &[data-decoration-color="yellow"] {
                 bottom: .75rem;
                 right: 1.25rem;
                 max-height: 6.1rem;
                 aspect-ratio: 6.9375 / 6.1;
+                @include mobile {
+                    max-height: 2.5833rem;
+                    aspect-ratio: 2.9167 / 2.5833;
+                }
             }
         }
         

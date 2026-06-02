@@ -71,8 +71,10 @@
             gap: 1.875rem;
             @include onest;
             color: #181818;
+            width: 100%;
             @include mobile {
                 gap: 1rem;
+                width: auto;
             }
             &__text {
                 font-size: 1.5rem;

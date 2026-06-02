@@ -22,7 +22,7 @@
                         Почему стоит выбрать нас?
                     </div>
                     <div class="about-section__title-block__sub-title">
-                        Доставка в течение <span>48 часов</span> с момента оформления заказа
+                        Доставка в течение <span>24 часов</span> с момента оформления заказа
                     </div>
                 </div>
                 <Button color="accent"

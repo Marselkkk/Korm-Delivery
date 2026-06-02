@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -35,3 +36,5 @@ Route::get('/reviews', function () {
     return Review::latest()->get();
 
 });
+
+Route::post('/orders', [OrderController::class, 'store']);

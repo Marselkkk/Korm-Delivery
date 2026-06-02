@@ -76,7 +76,7 @@
             aspect-ratio: 1 / 1;
             height: 100%;
             img {
-                @include image_cover;
+                @include image_contain;
             }
         }
         &__button-block {
