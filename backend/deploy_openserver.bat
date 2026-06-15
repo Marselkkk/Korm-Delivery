@@ -1,23 +1,23 @@
 @echo off
 chcp 65001 >nul
 echo ========================================
-echo   Korm Delivery BACKEND — korm-api
+echo   Korm Delivery BACKEND
+echo   D:\ospanel\domains\korm-delivery\backend
 echo ========================================
 
-set SITE_NAME=korm-api
-set SITE_DIR=D:\ospanel\domains\%SITE_NAME%
+set SITE_DIR=D:\ospanel\domains\korm-delivery\backend
 set PHP=D:\ospanel\modules\php\PHP-8.1\php.exe
 set COMPOSER=D:\ospanel\modules\php\PHP-8.1\composer.phar
 
-if not exist "D:\ospanel\domains" (
-    echo ОШИБКА: D:\ospanel\domains не найдена
+if not exist "D:\ospanel\domains\korm-delivery" (
+    echo ОШИБКА: папка korm-delivery не найдена в D:\ospanel\domains\
     pause & exit /b 1
 )
 
 echo [1/5] Создаём папку: %SITE_DIR%
 if not exist "%SITE_DIR%" mkdir "%SITE_DIR%"
 
-echo [2/5] Копируем файлы...
+echo [2/5] Копируем файлы Laravel...
 xcopy /E /I /Y /Q "." "%SITE_DIR%"
 del "%SITE_DIR%\deploy_openserver.bat" 2>nul
 
@@ -42,11 +42,7 @@ echo [5/5] Artisan...
 
 echo.
 echo ========================================
-echo   Бэкенд готов!
-echo   Добавь в OpenServer домен:
-echo     Имя:   %SITE_NAME%
-echo     Папка: %SITE_DIR%\public
-echo     PHP:   8.1 или 8.2
-echo   URL: http://%SITE_NAME%/api/...
+echo   Бэкенд готов в %SITE_DIR%
+echo   Теперь запусти deploy_openserver.bat из папки frontend
 echo ========================================
 pause

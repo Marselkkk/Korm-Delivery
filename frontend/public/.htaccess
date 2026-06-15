@@ -2,9 +2,13 @@ Options -MultiViews
 RewriteEngine On
 RewriteBase /
 
-# Если файл или папка существуют — отдать как есть
+# API, admin, sanctum → Laravel
+RewriteCond %{REQUEST_URI} ^/(api|admin|sanctum)(/|$)
+RewriteRule ^(.*)$ backend/public/index.php [L]
+
+# Статические файлы отдаём как есть
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Иначе — отдать 200.html (SPA fallback от Nuxt)
+# SPA fallback — все остальные пути → Nuxt
 RewriteRule ^(.*)$ /200.html [L]
