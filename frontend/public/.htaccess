@@ -1,0 +1,10 @@
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
+
+# Если файл или папка существуют — отдать как есть
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Иначе — отдать 200.html (SPA fallback от Nuxt)
+RewriteRule ^(.*)$ /200.html [L]
