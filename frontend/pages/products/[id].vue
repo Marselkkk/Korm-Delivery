@@ -33,22 +33,44 @@
         thumbsSwiper.value = swiper;
     };
 
-    const productImages = [
-        { id: 1, src: '/images/product-stub.png', alt: 'Product image 1' },
-        { id: 2, src: '/images/news-stub.jpg', alt: 'Product image 2' },
-    ];
-
     const route = useRoute()
 
     const config = useRuntimeConfig()
 
     const backendUrl = 'https://www.ptnasily.ru'
 
-    const { data: product, pending, error } = await useFetch(
+    interface ProductImage { id: number; image: string }
+    interface RelatedProduct { id: number; name: string; images: ProductImage[] }
+    interface Product {
+        id: number
+        name: string
+        description: string
+        images: ProductImage[]
+        weights: { id: number; weight: string; price: number }[]
+        nutrients: { id: number; name: string; pivot: { amount: number } }[]
+        relatedProducts: RelatedProduct[]
+    }
+
+    const { data: product, pending, error } = await useFetch<Product>(
         `${config.public.apiBase}/products/${route.params.id}`
     )
 
-    const selectedWeight = ref(null)
+    const relatedProductsSlice = computed(() =>
+        product.value?.relatedProducts?.slice(0, 3) ?? []
+    )
+
+    const productImages = computed(() => {
+        if (!product.value?.images?.length) {
+            return [{ id: 0, src: '/images/product-stub.png', alt: 'Product image' }];
+        }
+        return product.value.images.map((img) => ({
+            id: img.id,
+            src: `${backendUrl}/storage/${img.image}`,
+            alt: product.value!.name,
+        }));
+    });
+
+    const selectedWeight = ref<{ id: number; weight: string; price: number } | null>(null)
 
     watchEffect(() => {
 
@@ -57,7 +79,7 @@
             !selectedWeight.value
         ) {
             selectedWeight.value =
-                product.value.weights[0]
+                product.value.weights[0] ?? null
         }
 
     })
@@ -111,8 +133,18 @@
                             </div>
                         </div>
                         <div class="product-section__product-info__image-block">
-                            <img src="/images/product-stub.png" alt="product-image_1">
-                            <img src="/images/product-stub.png" alt="product-image_2">
+                            <a
+                                v-for="related in relatedProductsSlice"
+                                :key="related.id"
+                                :href="`/products/${related.id}`"
+                            >
+                                <img
+                                    :src="related.images?.[0]?.image
+                                        ? `${backendUrl}/storage/${related.images[0].image}`
+                                        : '/images/product-stub.png'"
+                                    :alt="related.name"
+                                />
+                            </a>
                         </div>
                         <div class="product-section__product-info__weight-block">
                             <div
@@ -284,7 +316,7 @@
                     @include manrope;
                     font-weight: 400;
                     font-size: 1.25rem;
-                    &[data-state="active"] {
+                    &.active {
                         background-color: #A3B18A;
                         color: #fff;
                     }

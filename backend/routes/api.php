@@ -26,7 +26,7 @@ Route::get('/products/{id}', function ($id) {
         'weights',
         'nutrients',
         'category',
-        'relatedProducts',
+        'relatedProducts.images',
     ])->findOrFail($id);
 
 });
