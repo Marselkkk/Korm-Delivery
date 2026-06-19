@@ -24,7 +24,8 @@
 </script>
 
 <template>
-    <a :href="`products/${link}`" class="product-card">
+    <div class="product-card">
+        <a :href="`products/${link}`" class="product-card__link"></a>
         <div class="product-card__title">
             {{ title || 'Атлантическая рыба с индейкой и бурым рисом SENSITIVE' }}
         </div>
@@ -38,18 +39,16 @@
             />
         </div>
         <div class="product-card__button-block">
-            <div @click.stop>
-                <ElementSelect placeholder="Вес"
-                    v-model="selected"
-                    :options="options"
-                    color="white" />
-            </div>
+            <ElementSelect placeholder="Вес"
+                v-model="selected"
+                :options="options"
+                color="white" />
             <Button color="accent"
             size="small">
                 Подробнее
             </Button>
         </div>
-    </a>
+    </div>
 </template>
 
 <style lang="scss">
@@ -59,6 +58,12 @@
         padding: 2.5rem;
         background-color: #fff;
         max-width: 29.5625rem;
+        position: relative;
+        &__link {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
         &__title {
             @include manrope;
             color: #181818;
@@ -83,7 +88,8 @@
         }
         &__button-block {
             @include df_jb_ac;
-            gap: 3.125rem;
+            position: relative;
+            z-index: 1;
         }
     }
 </style>
