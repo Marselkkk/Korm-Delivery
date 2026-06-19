@@ -200,8 +200,7 @@
     <section id="reviews">
         <div class="reviews-section">
             <div class="reviews-section__container">
-                <div class="reviews-section__title"
-                v-if="!currentlyMobile">
+                <div class="reviews-section__title">
                     Отзывы клиентов
                 </div>
                 <div class="reviews-section__info-block">
@@ -240,8 +239,8 @@
     <section id="about">
         <div class="advantages-section">
             <div class="advantages-section__container">
-                <div class="advantages-section__title"
-                v-if="!currentlyMobile">
+                <img class="advantages-section__pet-image" src="/images/cat-dog.png" alt="cat and dog" />
+                <div class="advantages-section__title">
                     Наши преимущства
                 </div>
                 <div class="advantages-section__info-block">
@@ -517,9 +516,24 @@
             padding: 7.5rem 12.75rem;
             @include df_fdc;
             gap: 3.25rem;
+            position: relative;
             @include mobile {
                 padding: 1.33rem 0.83rem;
                 border-radius: 0;
+            }
+        }
+        &__pet-image {
+            position: absolute;
+            top: -41%;
+            left: -2rem;
+            width: 42.875rem;
+            height: 28.5625rem;
+            object-fit: contain;
+            pointer-events: none;
+            @include mobile {
+                width: 11.1667rem;
+                height: 7.4167rem;
+                top: -27%;
             }
         }
         &__title {

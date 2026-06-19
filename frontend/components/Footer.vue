@@ -6,6 +6,7 @@
     <footer>
         <div class="footer">
             <div class="footer__container">
+                <img class="footer__dog-image" src="/images/footer-dog.png" alt="dog" />
                 <div class="footer__contact-block">
                     <div class="footer__contact-block__logo">
                         <img src="/images/Logo.png" alt="footer-logo">
@@ -111,8 +112,23 @@
                 background-color: #F8F2D5;
                 @include df_fdc;
                 gap: 1.125rem;
+                position: relative;
+                // overflow: hidden;
                 @include mobile {
                     padding: 1.33rem 1.33rem;
+                }
+            }
+            &__dog-image {
+                position: absolute;
+                right: 4rem;
+                top: 20%;
+                transform: translateY(-50%);
+                width: 30.625rem;
+                height: 34.3125rem;
+                object-fit: contain;
+                pointer-events: none;
+                @include mobile {
+                    display: none;
                 }
             }
             &__contact-block {

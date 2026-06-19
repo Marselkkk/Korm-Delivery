@@ -38,10 +38,12 @@
             />
         </div>
         <div class="product-card__button-block">
-            <ElementSelect placeholder="Вес"
-                v-model="selected" 
-                :options="options"
-                color="white" />
+            <div @click.stop>
+                <ElementSelect placeholder="Вес"
+                    v-model="selected"
+                    :options="options"
+                    color="white" />
+            </div>
             <Button color="accent"
             size="small">
                 Подробнее
