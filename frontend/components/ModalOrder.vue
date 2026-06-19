@@ -12,10 +12,9 @@
     const loading = ref(false)
 
     const cityOptions = [
-        { label: 'Москва', value: 'moscow' },
-        { label: 'Санкт-Петербург', value: 'spb' },
-        { label: 'Казань', value: 'kazan' },
-        { label: 'Новосибирск', value: 'novosibirsk' },
+        { label: 'Самара', value: 'samara' },
+        { label: 'Тольятти', value: 'togliatti' },
+        { label: 'Сызрань', value: 'syzran' },
     ]
 
     const city = ref<string | number | null>(null)

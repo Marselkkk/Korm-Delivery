@@ -17,9 +17,12 @@
     <section>
         <div class="news-section">
             <div class="news-section__container">
-                <NewsCard></NewsCard>
-                <NewsCard tag="top"></NewsCard>
-                <NewsCard tag="useful"></NewsCard>
+                <NewsCard image="/images/news/news_1.jpg"></NewsCard>
+                <NewsCard image="/images/news/news_2.jpg" tag="useful"></NewsCard>
+                <NewsCard image="/images/news/news_3.jpg" tag="top"></NewsCard>
+                <NewsCard image="/images/news/news_4.jpg" tag="useful"></NewsCard>
+                <NewsCard image="/images/news/news_5.jpg" tag="useful"></NewsCard>
+                <NewsCard image="/images/news/news_6.png" tag="top"></NewsCard>
             </div>
         </div>
     </section>
