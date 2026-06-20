@@ -34,7 +34,7 @@
                 v-if="!currentlyMobile">
                     <ul>
                         <li><a href="/assortment">Ассортимент</a></li>
-                        <li><a href="/mission">Наша миссия</a></li>
+                        <li><a href="/mission">Доставка</a></li>
                         <li><a href="/#reviews">Отзывы</a></li>
                         <li><a href="/about">О нас</a></li>
                         <li><a href="/news">Новости</a></li>
