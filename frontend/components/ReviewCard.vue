@@ -30,7 +30,6 @@
                     {{ name }}
                 </div>
                 <div class="review-card__info-block__profile__desc">
-                    <span>Собака породы доберман</span>
                     <div class="review-card__info-block__profile__rating">
                         <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg"
                         v-for="star in rating">
